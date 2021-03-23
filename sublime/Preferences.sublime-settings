@@ -13,7 +13,7 @@
 	"color_scheme": "Packages/Predawn/predawn.tmTheme",
 	"dictionary": "Packages/Dictionaries/Russian.dic",
 	"font_face": "Fira Code Retina",
-	"font_size": 19,
+	"font_size": 15,
 	"ignored_packages":
 	[
 		"Vintage"

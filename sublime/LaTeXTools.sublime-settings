@@ -126,7 +126,8 @@
 		"\\usepackage{amsmath}",
 		"\\usepackage{amssymb}",
 		"\\IfFileExists{latexsym.sty}{\\usepackage{latexsym}}{}",
-		"\\IfFileExists{mathtools.sty}{\\usepackage{mathtools}}{}"
+		"\\IfFileExists{mathtools.sty}{\\usepackage{mathtools}}{}",
+		"\\usepackage{physics}"
 	],
 
 	// An string of the remaining preamble (not packages) for the file,

@@ -1,0 +1,206 @@
+###############################################################################
+# Dock                                                                        #
+###############################################################################
+
+# Put the Dock on the left of the screen
+defaults write com.apple.dock "orientation" -string "left" && killall Dock
+
+# Dock icon size of 48 pixels
+defaults write com.apple.dock "tilesize" -int "48" && killall Dock
+
+# Autohide the Dock when the mouse is out
+defaults write com.apple.dock "autohide" -bool "true" && killall Dock
+
+# Change the Dock opening and closing animation times to 0.5 seconds
+defaults write com.apple.dock "autohide-time-modifier" -float "0.5" && killall Dock
+
+# The Dock only opens if the mouse doesn't move for 0.5 seconds
+defaults write com.apple.dock "autohide-delay" -float "0.5" && killall Dock
+
+# Do not display recent apps in the Dock
+defaults write com.apple.dock "show-recents" -bool "false" && killall Dock
+
+# Change the Dock minimize animation
+defaults write com.apple.dock "mineffect" -string "scale" && killall Dock
+
+# Show apps pinned to the dock
+defaults write com.apple.dock "static-only" -bool "false" && killall Dock
+
+# Spring loading is enabled for Dock items
+defaults write com.apple.dock "enable-spring-load-actions-on-all-items" -bool "true" && killall Dock
+
+###############################################################################
+# Screenshots                                                                 #
+###############################################################################
+
+# Remove the default shadow from screenshots
+defaults write com.apple.screencapture "disable-shadow" -bool "true"
+
+# Include date and time in screenshot filenames
+defaults write com.apple.screencapture "include-date" -bool "true" 
+
+# Set default screenshot location to ~/Pictures
+defaults write com.apple.screencapture "location" -string "~/Pictures" && killall SystemUIServer
+
+# Do not display the thumbnail after taking a screenshot
+defaults write com.apple.screencapture "show-thumbnail" -bool "false"
+
+# Set default screenshots image format to png
+defaults write com.apple.screencapture "type" -string "png" 
+
+###############################################################################
+# Safari                                                                      #
+###############################################################################
+
+# Don't show full website URL
+defaults write com.apple.safari "ShowFullURLInSmartSearchField" -bool "false" && killall Safari
+
+###############################################################################
+# Finder                                                                      #
+###############################################################################
+
+# Hide the Finder "Quit" option
+defaults write com.apple.finder "QuitMenuItem" -bool "false" && killall Finder
+
+# Show all file extensions inside the Finder
+defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true" && killall Finder
+
+# Do not show hidden files inside the Finder
+defaults write com.apple.finder "AppleShowAllFiles" -bool "false" && killall Finder
+
+# Show path bar
+defaults write com.apple.finder "ShowPathbar" -bool "true" && killall Finder
+
+# Set the default view style for folders without custom setting to List
+defaults write com.apple.finder "FXPreferredViewStyle" -string "Nlsv" && killall Finder
+
+# Keep folders on top when sorting by name
+defaults write com.apple.finder "_FXSortFoldersFirst" -bool "true" && killall Finder
+
+# Set the default search scope when performing a search to the current folder
+defaults write com.apple.finder "FXDefaultSearchScope" -string "SCcf" && killall Finder
+
+# Automatically empty bin after 30 days
+defaults write com.apple.finder "FXRemoveOldTrashItems" -bool "true" && killall Finder
+
+# Disable the warning when changing a file extension
+defaults write com.apple.finder "FXEnableExtensionChangeWarning" -bool "false" && killall Finder
+
+# iCloud Documents is the default directory opened in the fileviewer dialog when saving a new document
+defaults write NSGlobalDomain "NSDocumentSaveNewDocumentsToCloud" -bool "true"
+
+# Hide icon from the title bar
+defaults write com.apple.universalaccess "showWindowTitlebarIcons" -bool "false" && killall Finder
+
+# By default, the toolbar title hovering delay takes 0.5 seconds
+defaults write NSGlobalDomain "NSToolbarTitleViewRolloverDelay" -float "0.5" && killall Finder
+
+# Set the size of Finder sidebar icons to Medium
+defaults write NSGlobalDomain "NSTableViewDefaultSizeMode" -int "2" && killall Finder
+
+###############################################################################
+# Desktop                                                                     #
+###############################################################################
+
+# Keep folders on top when sorting
+defaults write com.apple.finder "_FXSortFoldersFirstOnDesktop" -bool "true" && killall Finder
+
+# Show all icons on desktop
+defaults write com.apple.finder "CreateDesktop" -bool "true" && killall Finder
+
+# Show hard disks on desktop
+defaults write com.apple.finder "ShowHardDrivesOnDesktop" -bool "true" && killall Finder
+
+# Show external disks on desktop
+defaults write com.apple.finder "ShowExternalHardDrivesOnDesktop" -bool "true" && killall Finder
+
+# Show removable media on desktop
+defaults write com.apple.finder "ShowRemovableMediaOnDesktop" -bool "true" && killall Finder
+
+# Show connected servers on desktop
+defaults write com.apple.finder "ShowMountedServersOnDesktop" -bool "true" && killall Finder
+
+###############################################################################
+# Menu Bar                                                                    #
+###############################################################################
+
+# The time separator stays solid continuously
+defaults write com.apple.menuextra.clock "FlashDateSeparators" -bool "false" && killall SystemUIServer
+
+# Configure the time and date format for the menubar digital clock to "Thu 18 Aug 19:23:36"
+defaults write com.apple.menuextra.clock "DateFormat" -string "\"EEE d MMM HH:mm:ss\"" 
+
+###############################################################################
+# Mission Control                                                             #
+###############################################################################
+
+# Keep the Spaces arrangement
+defaults write com.apple.dock "mru-spaces" -bool "false" && killall Dock
+
+###############################################################################
+# TextEdit                                                                    #
+###############################################################################
+
+# Set default document format as plain text (.txt)
+defaults write com.apple.TextEdit "RichText" -bool "false" && killall TextEdit
+
+###############################################################################
+# Time Machine                                                                #
+###############################################################################
+
+# When a new disk is connected, system does not prompt to ask if you want to use it as a backup volume
+defaults write com.apple.TimeMachine "DoNotOfferNewDisksForBackup" -bool "true"
+
+###############################################################################
+# Miscellaneous                                                               #
+###############################################################################
+
+# "Application Downloaded from Internet" popup will not display
+defaults write com.apple.LaunchServices "LSQuarantine" -bool "false"
+
+# Repeats the key as long as it is held down.
+defaults write NSGlobalDomain "ApplePressAndHoldEnabled" -bool "false"
+
+# Show scrollbars when scrolling 
+defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
+# Possible values: `WhenScrolling`, `Automatic` and `Always`
+
+# Expand save panel by default
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+
+# Expand print panel by default
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+
+# Automatically quit printer app once the print jobs complete
+defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+
+# Remove duplicates in the “Open With” menu (also see `lscleanup` alias)
+/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
+
+# Disable Resume system-wide
+defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
+
+# Disable automatic termination of inactive apps
+defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
+
+# Disable auto-correct
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+# Disable automatic period substitution as it’s annoying when typing code
+defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+
+# Disable automatic capitalization as it’s annoying when typing code
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+
+# Set language and text formats
+# Note: if you’re in the US, replace `EUR` with `USD`, `Centimeters` with
+# `Inches`, `en_GB` with `en_US`, and `true` with `false`.
+defaults write NSGlobalDomain AppleLanguages -array "en" "ru"
+defaults write NSGlobalDomain AppleLocale -string "en_US@currency=RUB"
+defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
+defaults write NSGlobalDomain AppleMetricUnits -bool true
+
+# Show language menu in the top right corner of the boot screen
+sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true

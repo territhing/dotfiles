@@ -1,33 +1,45 @@
+#!/usr/bin/env zsh
+
+# Close any open System Preferences panes, to prevent them from overriding
+# settings we’re about to change
+osascript -e 'tell application "System Preferences" to quit'
+
+# Ask for the administrator password upfront
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
 ###############################################################################
 # Dock                                                                        #
 ###############################################################################
 
 # Put the Dock on the left of the screen
-defaults write com.apple.dock "orientation" -string "left" && killall Dock
+defaults write com.apple.dock "orientation" -string "left" 
 
 # Dock icon size of 48 pixels
-defaults write com.apple.dock "tilesize" -int "48" && killall Dock
+defaults write com.apple.dock "tilesize" -int "48" 
 
 # Autohide the Dock when the mouse is out
-defaults write com.apple.dock "autohide" -bool "true" && killall Dock
+defaults write com.apple.dock "autohide" -bool "true" 
 
 # Change the Dock opening and closing animation times to 0.5 seconds
-defaults write com.apple.dock "autohide-time-modifier" -float "0.5" && killall Dock
+defaults write com.apple.dock "autohide-time-modifier" -float "0.5" 
 
 # The Dock only opens if the mouse doesn't move for 0.5 seconds
-defaults write com.apple.dock "autohide-delay" -float "0.5" && killall Dock
+defaults write com.apple.dock "autohide-delay" -float "0.5" 
 
 # Do not display recent apps in the Dock
-defaults write com.apple.dock "show-recents" -bool "false" && killall Dock
+defaults write com.apple.dock "show-recents" -bool "false" 
 
 # Change the Dock minimize animation
-defaults write com.apple.dock "mineffect" -string "scale" && killall Dock
+defaults write com.apple.dock "mineffect" -string "scale" 
 
 # Show apps pinned to the dock
-defaults write com.apple.dock "static-only" -bool "false" && killall Dock
+defaults write com.apple.dock "static-only" -bool "false" 
 
 # Spring loading is enabled for Dock items
-defaults write com.apple.dock "enable-spring-load-actions-on-all-items" -bool "true" && killall Dock
+defaults write com.apple.dock "enable-spring-load-actions-on-all-items" -bool "true" 
 
 ###############################################################################
 # Screenshots                                                                 #
@@ -40,7 +52,7 @@ defaults write com.apple.screencapture "disable-shadow" -bool "true"
 defaults write com.apple.screencapture "include-date" -bool "true" 
 
 # Set default screenshot location to ~/Pictures
-defaults write com.apple.screencapture "location" -string "~/Pictures" && killall SystemUIServer
+defaults write com.apple.screencapture "location" -string "~/Pictures" 
 
 # Do not display the thumbnail after taking a screenshot
 defaults write com.apple.screencapture "show-thumbnail" -bool "false"
@@ -53,79 +65,79 @@ defaults write com.apple.screencapture "type" -string "png"
 ###############################################################################
 
 # Don't show full website URL
-defaults write com.apple.safari "ShowFullURLInSmartSearchField" -bool "false" && killall Safari
+defaults write com.apple.safari "ShowFullURLInSmartSearchField" -bool "false" 
 
 ###############################################################################
 # Finder                                                                      #
 ###############################################################################
 
 # Hide the Finder "Quit" option
-defaults write com.apple.finder "QuitMenuItem" -bool "false" && killall Finder
+defaults write com.apple.finder "QuitMenuItem" -bool "false" 
 
 # Show all file extensions inside the Finder
-defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true" && killall Finder
+defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true" 
 
 # Do not show hidden files inside the Finder
-defaults write com.apple.finder "AppleShowAllFiles" -bool "false" && killall Finder
+defaults write com.apple.finder "AppleShowAllFiles" -bool "false" 
 
 # Show path bar
-defaults write com.apple.finder "ShowPathbar" -bool "true" && killall Finder
+defaults write com.apple.finder "ShowPathbar" -bool "true" 
 
 # Set the default view style for folders without custom setting to List
-defaults write com.apple.finder "FXPreferredViewStyle" -string "Nlsv" && killall Finder
+defaults write com.apple.finder "FXPreferredViewStyle" -string "Nlsv" 
 
 # Keep folders on top when sorting by name
-defaults write com.apple.finder "_FXSortFoldersFirst" -bool "true" && killall Finder
+defaults write com.apple.finder "_FXSortFoldersFirst" -bool "true" 
 
 # Set the default search scope when performing a search to the current folder
-defaults write com.apple.finder "FXDefaultSearchScope" -string "SCcf" && killall Finder
+defaults write com.apple.finder "FXDefaultSearchScope" -string "SCcf" 
 
 # Automatically empty bin after 30 days
-defaults write com.apple.finder "FXRemoveOldTrashItems" -bool "true" && killall Finder
+defaults write com.apple.finder "FXRemoveOldTrashItems" -bool "true" 
 
 # Disable the warning when changing a file extension
-defaults write com.apple.finder "FXEnableExtensionChangeWarning" -bool "false" && killall Finder
+defaults write com.apple.finder "FXEnableExtensionChangeWarning" -bool "false" 
 
 # iCloud Documents is the default directory opened in the fileviewer dialog when saving a new document
 defaults write NSGlobalDomain "NSDocumentSaveNewDocumentsToCloud" -bool "true"
 
 # Hide icon from the title bar
-defaults write com.apple.universalaccess "showWindowTitlebarIcons" -bool "false" && killall Finder
+defaults write com.apple.universalaccess "showWindowTitlebarIcons" -bool "false" 
 
 # By default, the toolbar title hovering delay takes 0.5 seconds
-defaults write NSGlobalDomain "NSToolbarTitleViewRolloverDelay" -float "0.5" && killall Finder
+defaults write NSGlobalDomain "NSToolbarTitleViewRolloverDelay" -float "0.5" 
 
 # Set the size of Finder sidebar icons to Medium
-defaults write NSGlobalDomain "NSTableViewDefaultSizeMode" -int "2" && killall Finder
+defaults write NSGlobalDomain "NSTableViewDefaultSizeMode" -int "2" 
 
 ###############################################################################
 # Desktop                                                                     #
 ###############################################################################
 
 # Keep folders on top when sorting
-defaults write com.apple.finder "_FXSortFoldersFirstOnDesktop" -bool "true" && killall Finder
+defaults write com.apple.finder "_FXSortFoldersFirstOnDesktop" -bool "true" 
 
 # Show all icons on desktop
-defaults write com.apple.finder "CreateDesktop" -bool "true" && killall Finder
+defaults write com.apple.finder "CreateDesktop" -bool "true" 
 
 # Show hard disks on desktop
-defaults write com.apple.finder "ShowHardDrivesOnDesktop" -bool "true" && killall Finder
+defaults write com.apple.finder "ShowHardDrivesOnDesktop" -bool "true" 
 
 # Show external disks on desktop
-defaults write com.apple.finder "ShowExternalHardDrivesOnDesktop" -bool "true" && killall Finder
+defaults write com.apple.finder "ShowExternalHardDrivesOnDesktop" -bool "true" 
 
 # Show removable media on desktop
-defaults write com.apple.finder "ShowRemovableMediaOnDesktop" -bool "true" && killall Finder
+defaults write com.apple.finder "ShowRemovableMediaOnDesktop" -bool "true" 
 
 # Show connected servers on desktop
-defaults write com.apple.finder "ShowMountedServersOnDesktop" -bool "true" && killall Finder
+defaults write com.apple.finder "ShowMountedServersOnDesktop" -bool "true" 
 
 ###############################################################################
 # Menu Bar                                                                    #
 ###############################################################################
 
 # The time separator stays solid continuously
-defaults write com.apple.menuextra.clock "FlashDateSeparators" -bool "false" && killall SystemUIServer
+defaults write com.apple.menuextra.clock "FlashDateSeparators" -bool "false" 
 
 # Configure the time and date format for the menubar digital clock to "Thu 18 Aug 19:23:36"
 defaults write com.apple.menuextra.clock "DateFormat" -string "\"EEE d MMM HH:mm:ss\"" 
@@ -135,14 +147,14 @@ defaults write com.apple.menuextra.clock "DateFormat" -string "\"EEE d MMM HH:mm
 ###############################################################################
 
 # Keep the Spaces arrangement
-defaults write com.apple.dock "mru-spaces" -bool "false" && killall Dock
+defaults write com.apple.dock "mru-spaces" -bool "false" 
 
 ###############################################################################
 # TextEdit                                                                    #
 ###############################################################################
 
 # Set default document format as plain text (.txt)
-defaults write com.apple.TextEdit "RichText" -bool "false" && killall TextEdit
+defaults write com.apple.TextEdit "RichText" -bool "false" 
 
 ###############################################################################
 # Time Machine                                                                #
@@ -162,8 +174,8 @@ defaults write com.apple.LaunchServices "LSQuarantine" -bool "false"
 defaults write NSGlobalDomain "ApplePressAndHoldEnabled" -bool "false"
 
 # Show scrollbars when scrolling 
-defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
 # Possible values: `WhenScrolling`, `Automatic` and `Always`
+defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
 
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
@@ -204,3 +216,33 @@ defaults write NSGlobalDomain AppleMetricUnits -bool true
 
 # Show language menu in the top right corner of the boot screen
 sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
+
+###############################################################################
+# Kill affected applications                                                  #
+###############################################################################
+
+for app in "Activity Monitor" \
+        "Address Book" \
+        "Calendar" \
+        "cfprefsd" \
+        "Contacts" \
+        "Dock" \
+        "Finder" \
+        "Google Chrome Canary" \
+        "Google Chrome" \
+        "Mail" \
+        "Messages" \
+        "Opera" \
+        "Photos" \
+        "Safari" \
+        "SizeUp" \
+        "Spectacle" \
+        "SystemUIServer" \
+        "Terminal" \
+        "Transmission" \
+        "Tweetbot" \
+        "Twitter" \
+        "iCal"; do
+        killall "${app}" &> /dev/null
+done
+echo "Done. Note that some of these changes require a logout/restart to take effect."
